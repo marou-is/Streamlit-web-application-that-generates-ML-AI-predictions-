@@ -173,26 +173,38 @@ class HomeView:
         </div>
         """, unsafe_allow_html=True)
 
-        # Upload + download side by side
+        # Upload with inline download button inside the dropzone
+        import pathlib
+        csv_path = pathlib.Path(__file__).parent.parent / "profitentr.csv"
+        dl_html = ""
+        if csv_path.exists():
+            import base64
+            b64 = base64.b64encode(csv_path.read_bytes()).decode()
+            dl_html = f'''
+            <a href="data:text/csv;base64,{b64}" download="profitentr.csv"
+               style="
+                 display:inline-block;
+                 font-family:'Space Mono',monospace;
+                 font-size:.85rem;
+                 color:#00e5c0;
+                 background:transparent;
+                 border:none;
+                 cursor:pointer;
+                 text-decoration:none;
+                 letter-spacing:.03em;
+                 padding:0;
+                 white-space:nowrap;
+               ">
+              📥 Download file
+            </a>'''
+
         st.subheader("1. 📂 Chargement du Jeu de Données")
-        col_dl, col_up = st.columns([1, 2])
-        with col_dl:
-            import pathlib
-            csv_path = pathlib.Path(__file__).parent.parent / "profitentr.csv"
-            if csv_path.exists():
-                st.download_button(
-                    label="📥 Télécharger profitentr.csv",
-                    data=csv_path.read_bytes(),
-                    file_name="profitentr.csv",
-                    mime="text/csv",
-                    use_container_width=True,
-                )
-                st.caption("Pas encore le fichier ? Téléchargez-le ici.")
-        with col_up:
-            fichier = st.file_uploader(
-                "Importer le fichier « profitentr » (CSV) depuis votre PC",
-                type=["csv"]
-            )
+        if dl_html:
+            st.markdown(dl_html, unsafe_allow_html=True)
+        fichier = st.file_uploader(
+            "Importer le fichier « profitentr » (CSV) depuis votre PC",
+            type=["csv"]
+        )
 
 
         # Scroll watcher — lives in its own iframe, reaches parent DOM freely
