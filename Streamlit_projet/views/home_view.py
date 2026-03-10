@@ -173,12 +173,26 @@ class HomeView:
         </div>
         """, unsafe_allow_html=True)
 
-        # Upload
+        # Upload + download side by side
         st.subheader("1. 📂 Chargement du Jeu de Données")
-        fichier = st.file_uploader(
-            "Importer le fichier « profitentr » (CSV) depuis votre PC",
-            type=["csv"]
-        )
+        col_dl, col_up = st.columns([1, 2])
+        with col_dl:
+            import pathlib
+            csv_path = pathlib.Path(__file__).parent.parent / "profitentr.csv"
+            if csv_path.exists():
+                st.download_button(
+                    label="📥 Télécharger profitentr.csv",
+                    data=csv_path.read_bytes(),
+                    file_name="profitentr.csv",
+                    mime="text/csv",
+                    use_container_width=True,
+                )
+                st.caption("Pas encore le fichier ? Téléchargez-le ici.")
+        with col_up:
+            fichier = st.file_uploader(
+                "Importer le fichier « profitentr » (CSV) depuis votre PC",
+                type=["csv"]
+            )
 
 
         # Scroll watcher — lives in its own iframe, reaches parent DOM freely
