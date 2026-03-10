@@ -2,6 +2,7 @@
 modules/styles.py — Dark Teal theme
 """
 import streamlit as st
+
 CSS = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap');
@@ -29,45 +30,14 @@ html,body,[data-testid="stApp"],[data-testid="stAppViewContainer"],
 [data-testid="stVerticalBlock"],[data-testid="stHorizontalBlock"],[data-testid="column"] { background:transparent !important; }
 
 /* Header */
-[data-testid="stHeader"] { 
-  background:rgba(11,15,26,.92) !important; 
-  backdrop-filter:blur(12px) !important; 
-  border-bottom:1px solid var(--rim) !important; 
-}
-
-/* Show the three-dots menu */
-[data-testid="stHeader"] [data-testid="stStatusWidget"] {
-  display: flex !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-/* Remove cyan square from deploy button */
-[data-testid="stHeader"] [data-testid="stStatusWidget"] [data-testid="baseButton-header"] {
-  background: transparent !important;
-  border: 1px solid var(--rim) !important;
-  border-radius: 6px !important;
-}
-
-/* Style the three-dots icon */
-[data-testid="stHeader"] [data-testid="stStatusWidget"] svg {
-  fill: var(--white) !important;
-  color: var(--white) !important;
-}
-
-/* Remove any cyan backgrounds */
-[data-testid="stHeader"] [data-testid="stStatusWidget"] div[style*="background"] {
-  background: transparent !important;
-}
-
-/* Keep hover effect clean */
-[data-testid="stHeader"] [data-testid="stStatusWidget"] [data-testid="baseButton-header"]:hover {
-  border-color: var(--teal) !important;
-}
-
-[data-testid="stHeader"] [data-testid="stStatusWidget"] [data-testid="baseButton-header"]:hover svg {
-  fill: var(--teal) !important;
-}
+[data-testid="stHeader"] { background:rgba(11,15,26,.92) !important; backdrop-filter:blur(12px) !important; border-bottom:1px solid var(--rim) !important; }
+[data-testid="stHeader"] button { background:transparent !important; border:none !important; box-shadow:none !important; }
+[data-testid="stHeader"] button:hover { background:var(--bg3) !important; border-radius:6px !important; }
+[data-testid="stHeader"] svg path,[data-testid="stHeader"] svg rect,[data-testid="stHeader"] svg circle { fill:var(--teal) !important; }
+[data-testid="stHeader"] span,[data-testid="stHeader"] p { color:var(--white) !important; font-family:var(--sans) !important; }
+[data-testid="stHeaderActionElements"] button { border:1px solid var(--rim) !important; border-radius:6px !important; padding:.18rem .9rem !important; font-family:var(--mono) !important; font-size:.78rem !important; }
+[data-testid="stHeaderActionElements"] button > div,[data-testid="stHeaderActionElements"] button svg { display:none !important; }
+[data-testid="stHeaderActionElements"] button:hover { border-color:var(--teal) !important; color:var(--teal) !important; }
 
 /* Typography */
 p,span,li,[data-testid="stMarkdownContainer"] p,[data-testid="stMarkdownContainer"] li { color:var(--white) !important; font-family:var(--sans) !important; }
@@ -133,7 +103,9 @@ li[aria-selected="true"] { background:var(--bg3) !important; color:var(--teal) !
 
 /* Expander */
 [data-testid="stExpander"] { background:var(--bg3) !important; border:1px solid var(--rim) !important; border-radius:8px !important; margin:.5rem 0 .9rem !important; }
-[data-testid="stExpander"] summary p,[data-testid="stExpander"] summary span { color:var(--teal) !important; font-family:var(--mono) !important; font-size:.8rem !important; }
+[data-testid="stExpander"] summary { display:flex !important; align-items:center !important; gap:.5rem !important; padding:.55rem .8rem !important; }
+[data-testid="stExpander"] summary p,[data-testid="stExpander"] summary span { color:var(--teal) !important; font-family:var(--mono) !important; font-size:.8rem !important; margin:0 !important; padding:0 !important; }
+[data-testid="stExpander"] summary [data-testid="stIconMaterial"] { color:var(--teal) !important; font-size:1.1rem !important; flex-shrink:0 !important; }
 [data-testid="stExpander"] svg { stroke:var(--teal) !important; }
 
 /* Dataframe */
