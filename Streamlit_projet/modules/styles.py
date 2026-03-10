@@ -103,7 +103,7 @@ li[aria-selected="true"] { background:var(--bg3) !important; color:var(--teal) !
 
 /* Expander */
 [data-testid="stExpander"] { background:var(--bg3) !important; border:1px solid var(--rim) !important; border-radius:8px !important; margin:.5rem 0 .9rem !important; }
-[data-testid="stExpander"] summary { display:flex !important; align-items:center !important; gap:.5rem !important; padding:.55rem .8rem !important; }
+[data-testid="stExpander"] summary { display:flex !important; align-items:center !important; gap:.4rem !important; }
 [data-testid="stExpander"] summary p,[data-testid="stExpander"] summary span { color:var(--teal) !important; font-family:var(--mono) !important; font-size:.8rem !important; margin:0 !important; padding:0 !important; }
 [data-testid="stExpander"] summary [data-testid="stIconMaterial"] { display:none !important; }
 [data-testid="stExpander"] svg { stroke:var(--teal) !important; }
@@ -119,6 +119,30 @@ li[aria-selected="true"] { background:var(--bg3) !important; color:var(--teal) !
 /* Spacing */
 .stButton { margin-top:.9rem !important; margin-bottom:.4rem !important; }
 [data-testid="stSelectbox"],[data-testid="stSlider"],[data-testid="stRadio"],[data-testid="stNumberInput"] { margin-bottom:.8rem !important; }
+
+/* Download button — same ghost style as regular buttons */
+[data-testid="stDownloadButton"] > button {
+  background:transparent !important;
+  border:1.5px solid var(--teal) !important;
+  color:var(--teal) !important;
+  font-family:var(--mono) !important;
+  font-size:.82rem !important;
+  letter-spacing:.05em !important;
+  border-radius:6px !important;
+  padding:.48rem 1rem !important;
+  width:100% !important;
+  transition:all .2s !important;
+}
+[data-testid="stDownloadButton"] > button:hover {
+  background:var(--teal) !important;
+  color:var(--bg) !important;
+  box-shadow:0 0 18px rgba(0,229,192,.3) !important;
+}
+[data-testid="stDownloadButton"] > button p,
+[data-testid="stDownloadButton"] > button span {
+  color:inherit !important;
+  font-family:var(--mono) !important;
+}
 
 /* Scrollbar */
 ::-webkit-scrollbar { width:5px; height:5px; }
