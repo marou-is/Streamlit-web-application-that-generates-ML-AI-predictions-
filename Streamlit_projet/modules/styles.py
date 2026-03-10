@@ -105,7 +105,7 @@ li[aria-selected="true"] { background:var(--bg3) !important; color:var(--teal) !
 [data-testid="stExpander"] { background:var(--bg3) !important; border:1px solid var(--rim) !important; border-radius:8px !important; margin:.5rem 0 .9rem !important; }
 [data-testid="stExpander"] summary { display:flex !important; align-items:center !important; gap:.5rem !important; padding:.55rem .8rem !important; }
 [data-testid="stExpander"] summary p,[data-testid="stExpander"] summary span { color:var(--teal) !important; font-family:var(--mono) !important; font-size:.8rem !important; margin:0 !important; padding:0 !important; }
-[data-testid="stExpander"] summary [data-testid="stIconMaterial"] { color:var(--teal) !important; font-size:1.1rem !important; flex-shrink:0 !important; }
+[data-testid="stExpander"] summary [data-testid="stIconMaterial"] { display:none !important; }
 [data-testid="stExpander"] svg { stroke:var(--teal) !important; }
 
 /* Dataframe */
