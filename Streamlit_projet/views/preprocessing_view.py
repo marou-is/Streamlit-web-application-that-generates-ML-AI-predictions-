@@ -24,7 +24,7 @@ class PreprocessingView:
     def render_encoding(df: pd.DataFrame,
                         prep: Preprocessor,
                         cat_cols: list) -> pd.DataFrame:
-        _sec("7. 🔤 Encodage des Variables Catégorielles")
+        _sec("7. Encodage des Variables Catégorielles")
         df_enc = SessionManager.get("df_encoded")
 
         if cat_cols:
@@ -32,7 +32,7 @@ class PreprocessingView:
             method = st.selectbox("Méthode d'encodage :", [
                 "One-Hot Encoding", "Binary Encoding", "Label Encoding",
             ])
-            with st.expander("ℹ️ Description des méthodes"):
+            with st.expander("Description des méthodes"):
                 st.markdown("""
                 - **One-Hot Encoding** : Crée une colonne binaire par catégorie.
                 - **Binary Encoding** : Représentation binaire compacte.
@@ -65,7 +65,7 @@ class PreprocessingView:
             "Aucune normalisation", "Min-Max Scaling (0-1)",
             "Standardisation Z-score", "Robust Scaling",
         ])
-        with st.expander("ℹ️ Description des méthodes"):
+        with st.expander("Description des méthodes"):
             st.markdown("""
             - **Min-Max** : Ramène les valeurs entre 0 et 1.
             - **Z-score** : Moyenne=0, écart-type=1.
@@ -80,7 +80,7 @@ class PreprocessingView:
             st.warning(f"Colonnes non-numériques ignorées : "
                        f"**{', '.join(skipped)}**. Appliquez l'encodage d'abord.")
 
-        if st.button("✅ Appliquer la Normalisation"):
+        if st.button("Appliquer la Normalisation"):
             df_norm = prep.normalise(df, method)
             SessionManager.set("df_norm", df_norm)
             SessionManager.save_preprocessor(prep)
@@ -135,7 +135,7 @@ class PreprocessingView:
             max_c = min(len(numeric_X), df.shape[0])
             n_c   = st.slider("Nombre de composantes", 1, max_c, min(2, max_c))
 
-            if st.button("✅ Appliquer la PCA"):
+            if st.button("Appliquer la PCA"):
                 df_pca, var_ratio = prep.apply_pca(df, n_c)
                 SessionManager.set("df_final", df_pca)
                 SessionManager.save_preprocessor(prep)
@@ -156,7 +156,7 @@ class PreprocessingView:
     # ── Step 11 — Final dataset ───────────────────────────────
     @staticmethod
     def render_final(df: pd.DataFrame):
-        _sec("11. ✅ Jeu de Données Après Préparation Complète")
+        _sec("11.Jeu de Données Après Préparation Complète")
         st.dataframe(df, use_container_width=True)
         st.write(f"**Dimensions :** {df.shape[0]} lignes × "
                  f"{df.shape[1]} colonnes")
