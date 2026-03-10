@@ -173,38 +173,47 @@ class HomeView:
         </div>
         """, unsafe_allow_html=True)
 
-        # Upload with inline download button inside the dropzone
-        import pathlib
+        # Upload
+        import pathlib, base64
         csv_path = pathlib.Path(__file__).parent.parent / "profitentr.csv"
-        dl_html = ""
-        if csv_path.exists():
-            import base64
-            b64 = base64.b64encode(csv_path.read_bytes()).decode()
-            dl_html = f'''
-            <a href="data:text/csv;base64,{b64}" download="profitentr.csv"
-               style="
-                 display:inline-block;
-                 font-family:'Space Mono',monospace;
-                 font-size:.85rem;
-                 color:#00e5c0;
-                 background:transparent;
-                 border:none;
-                 cursor:pointer;
-                 text-decoration:none;
-                 letter-spacing:.03em;
-                 padding:0;
-                 white-space:nowrap;
-               ">
-              📥 Download file
-            </a>'''
 
         st.subheader("1. 📂 Chargement du Jeu de Données")
-        if dl_html:
-            st.markdown(dl_html, unsafe_allow_html=True)
         fichier = st.file_uploader(
             "Importer le fichier « profitentr » (CSV) depuis votre PC",
             type=["csv"]
         )
+
+        # Inject download link inside the uploader box via JS
+        if csv_path.exists():
+            b64 = base64.b64encode(csv_path.read_bytes()).decode()
+            st.markdown(f"""
+            <script>
+            (function(){{
+                function injectLink(){{
+                    var btn = document.querySelector('[data-testid="stFileUploaderDropzone"] button');
+                    if(!btn){{ setTimeout(injectLink, 100); return; }}
+                    if(document.getElementById('dl-csv-link')) return;
+                    var a = document.createElement('a');
+                    a.id = 'dl-csv-link';
+                    a.href = 'data:text/csv;base64,{b64}';
+                    a.download = 'profitentr.csv';
+                    a.innerText = 'Download file';
+                    a.style.cssText = [
+                        'font-family:"Space Mono",monospace',
+                        'font-size:.85rem',
+                        'color:#00e5c0',
+                        'text-decoration:none',
+                        'white-space:nowrap',
+                        'margin-right:.8rem',
+                        'letter-spacing:.03em',
+                        'cursor:pointer'
+                    ].join(';');
+                    btn.parentNode.insertBefore(a, btn);
+                }}
+                injectLink();
+            }})();
+            </script>
+            """, unsafe_allow_html=True)
 
 
         # Scroll watcher — lives in its own iframe, reaches parent DOM freely
