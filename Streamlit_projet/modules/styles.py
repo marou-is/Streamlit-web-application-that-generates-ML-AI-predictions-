@@ -30,7 +30,7 @@ html,body,[data-testid="stApp"],[data-testid="stAppViewContainer"],
 [data-testid="stVerticalBlock"],[data-testid="stHorizontalBlock"],[data-testid="column"] { background:transparent !important; }
 
 /* Header */
-[data-testid="stHeaderActionElements"] button > div { display:none !important; }
+
 [data-testid="stHeaderActionElements"] button:hover { border-color:var(--teal) !important; color:var(--teal) !important; }
 [data-testid="stHeader"] button { background:transparent !important; border:none !important; box-shadow:none !important; }
 [data-testid="stHeader"] button:hover { background:var(--bg3) !important; border-radius:6px !important; }
@@ -39,15 +39,6 @@ html,body,[data-testid="stApp"],[data-testid="stAppViewContainer"],
 [data-testid="stHeaderActionElements"] button { border:1px solid var(--rim) !important; border-radius:6px !important; padding:.18rem .9rem !important; font-family:var(--mono) !important; font-size:.78rem !important; }
 [data-testid="stHeaderActionElements"] button > div,[data-testid="stHeaderActionElements"] button svg { display:none !important; }
 [data-testid="stHeaderActionElements"] button:hover { border-color:var(--teal) !important; color:var(--teal) !important; }
-
-/* Menu icon (three dots) */
-[data-testid="stHeaderActionElements"] button svg {
-  display: block !important;
-  fill: var(--white) !important;
-  color: var(--white) !important;
-  width: 18px !important;
-  height: 18px !important;
-}
 
 [data-testid="stHeaderActionElements"] button:hover svg {
   fill: var(--teal) !important;
@@ -115,7 +106,7 @@ li[aria-selected="true"] { background:var(--bg3) !important; color:var(--teal) !
 /* Alerts */
 [data-testid="stAlert"] { background:var(--bg3) !important; border:1px solid var(--rim) !important; border-radius:8px !important; padding:.75rem 1rem !important; margin:.5rem 0 !important; }
 [data-testid="stAlert"] p,[data-testid="stAlert"] span { color:var(--white) !important; }
-root.querySelectorAll('[data-testid="stHeaderActionElements"] button > div').forEach(el=>el.style.setProperty('display','none','important'));
+
 /* Expander */
 [data-testid="stExpander"] { background:var(--bg3) !important; border:1px solid var(--rim) !important; border-radius:8px !important; margin:.5rem 0 .9rem !important; }
 [data-testid="stExpander"] summary { display:flex !important; align-items:center !important; gap:.4rem !important; }
