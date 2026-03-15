@@ -205,7 +205,7 @@ div[style*="background-color: rgb(0, 229, 192)"] {
 }
 
 /* Debug - add a temporary border to see if the element exists */
-/* [data-testid="stStatusWidget"] { border: 2px solid red !important; } */
+[data-testid="stStatusWidget"] { border: 2px solid red !important; } 
 </style>
 """
 
