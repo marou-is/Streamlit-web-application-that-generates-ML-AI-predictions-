@@ -30,20 +30,15 @@ html,body,[data-testid="stApp"],[data-testid="stAppViewContainer"],
 [data-testid="stVerticalBlock"],[data-testid="stHorizontalBlock"],[data-testid="column"] { background:transparent !important; }
 
 /* Header */
-
-[data-testid="stHeaderActionElements"] button:hover { border-color:var(--teal) !important; color:var(--teal) !important; }
+[data-testid="stHeader"] { background:rgba(11,15,26,.92) !important; backdrop-filter:blur(12px) !important; border-bottom:1px solid var(--rim) !important; }
 [data-testid="stHeader"] button { background:transparent !important; border:none !important; box-shadow:none !important; }
 [data-testid="stHeader"] button:hover { background:var(--bg3) !important; border-radius:6px !important; }
 [data-testid="stHeader"] svg path,[data-testid="stHeader"] svg rect,[data-testid="stHeader"] svg circle { fill:var(--teal) !important; }
+[data-testid="stMainMenuButton"] svg path,[data-testid="stMainMenuButton"] svg rect,[data-testid="stMainMenuButton"] svg circle { fill:var(--white) !important; }
 [data-testid="stHeader"] span,[data-testid="stHeader"] p { color:var(--white) !important; font-family:var(--sans) !important; }
 [data-testid="stHeaderActionElements"] button { border:1px solid var(--rim) !important; border-radius:6px !important; padding:.18rem .9rem !important; font-family:var(--mono) !important; font-size:.78rem !important; }
 [data-testid="stHeaderActionElements"] button > div,[data-testid="stHeaderActionElements"] button svg { display:none !important; }
 [data-testid="stHeaderActionElements"] button:hover { border-color:var(--teal) !important; color:var(--teal) !important; }
-
-[data-testid="stHeaderActionElements"] button:hover svg {
-  fill: var(--teal) !important;
-  color: var(--teal) !important;
-}
 
 /* Typography */
 p,span,li,[data-testid="stMarkdownContainer"] p,[data-testid="stMarkdownContainer"] li { color:var(--white) !important; font-family:var(--sans) !important; }
@@ -190,7 +185,7 @@ JS = """
       if(li.getAttribute('aria-selected')=='true')li.style.setProperty('color',T,'important');
     });
     root.querySelectorAll('[data-testid="StyledDataFrameToolbar"] button').forEach(b=>{b.style.background='transparent';b.querySelectorAll('svg path').forEach(p=>p.style.fill=T);});
-    root.querySelectorAll('[data-testid="stHeader"] svg path,[data-testid="stHeader"] svg rect').forEach(el=>el.style.setProperty('fill',T,'important'));
+    root.querySelectorAll('[data-testid="stHeader"] svg path,[data-testid="stHeader"] svg rect').forEach(el=>{ if(!el.closest('[data-testid="stMainMenuButton"]')) el.style.setProperty('fill',T,'important'); });
     root.querySelectorAll('[data-testid="stHeaderActionElements"] button > div,[data-testid="stHeaderActionElements"] button svg').forEach(el=>el.style.setProperty('display','none','important'));
   }
   new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1){patch(n);patch(document.body);}}))).observe(document.body,{childList:true,subtree:true});
