@@ -134,45 +134,49 @@ HERO_CSS = """
     padding-left: .2rem;
     opacity: .85;
 }
-/* Header */
-[data-testid="stHeader"] { 
-  background:rgba(11,15,26,.92) !important; 
-  backdrop-filter:blur(12px) !important; 
-  border-bottom:1px solid var(--rim) !important; 
+
+/* HEADER FIXES - Add this section */
+[data-testid="stHeader"] {
+    background: rgba(11,15,26,.92) !important;
+    backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(31,45,69,0.5) !important;
 }
 
-/* Show the three-dots menu */
-[data-testid="stHeader"] [data-testid="stStatusWidget"] {
-  display: flex !important;
-  opacity: 1 !important;
-  visibility: visible !important;
+/* Show the menu button (three dots) */
+[data-testid="stStatusWidget"] {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
-/* Remove cyan square from deploy button */
-[data-testid="stHeader"] [data-testid="stStatusWidget"] [data-testid="baseButton-header"] {
-  background: transparent !important;
-  border: 1px solid var(--rim) !important;
-  border-radius: 6px !important;
+/* Style the menu button */
+[data-testid="stStatusWidget"] [data-testid="baseButton-header"] {
+    background: transparent !important;
+    border: 1px solid rgba(31,45,69,0.8) !important;
+    border-radius: 6px !important;
+    padding: 0.18rem 0.5rem !important;
 }
 
 /* Style the three-dots icon */
-[data-testid="stHeader"] [data-testid="stStatusWidget"] svg {
-  fill: var(--white) !important;
-  color: var(--white) !important;
+[data-testid="stStatusWidget"] svg {
+    fill: #e8edf8 !important;
+    color: #e8edf8 !important;
+    width: 16px !important;
+    height: 16px !important;
 }
 
-/* Remove any cyan backgrounds */
-[data-testid="stHeader"] [data-testid="stStatusWidget"] div[style*="background"] {
-  background: transparent !important;
+/* Remove cyan square - if there's any cyan background */
+[data-testid="stStatusWidget"] div[style*="background"] {
+    background: transparent !important;
 }
 
-/* Keep hover effect clean */
-[data-testid="stHeader"] [data-testid="stStatusWidget"] [data-testid="baseButton-header"]:hover {
-  border-color: var(--teal) !important;
+/* Hover effect */
+[data-testid="stStatusWidget"] [data-testid="baseButton-header"]:hover {
+    border-color: #00e5c0 !important;
 }
 
-[data-testid="stHeader"] [data-testid="stStatusWidget"] [data-testid="baseButton-header"]:hover svg {
-  fill: var(--teal) !important;
+[data-testid="stStatusWidget"] [data-testid="baseButton-header"]:hover svg {
+    fill: #00e5c0 !important;
 }
 </style>
 """
