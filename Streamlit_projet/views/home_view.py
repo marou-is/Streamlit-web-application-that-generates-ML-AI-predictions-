@@ -135,77 +135,49 @@ HERO_CSS = """
     opacity: .85;
 }
 
-/* COMPLETE HEADER RESET */
+/* HEADER FIXES - Target the actual menu icon */
 [data-testid="stHeader"] {
     background: rgba(11,15,26,.92) !important;
     backdrop-filter: blur(12px) !important;
     border-bottom: 1px solid rgba(31,45,69,0.5) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
 }
 
-/* Force the menu to appear */
-[data-testid="stStatusWidget"] {
-    display: flex !important;
+/* Target the menu icon specifically */
+.st-emotion-cache-nsoqg8 {
+    fill: #e8edf8 !important;
+    color: #e8edf8 !important;
+    width: 20px !important;
+    height: 20px !important;
+    display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    position: relative !important;
-    right: 10px !important;
-    margin-left: auto !important;
 }
 
-/* Make sure the button is visible */
-[data-testid="stStatusWidget"] button {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+/* Target the button containing the menu */
+button[data-testid="baseButton-header"] {
     background: transparent !important;
     border: 1px solid rgba(31,45,69,0.8) !important;
     border-radius: 6px !important;
     padding: 4px 8px !important;
-    min-width: 32px !important;
-    min-height: 32px !important;
+    margin-right: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
-/* Show the SVG icon */
-[data-testid="stStatusWidget"] button svg {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    fill: #e8edf8 !important;
-    color: #e8edf8 !important;
-    width: 18px !important;
-    height: 18px !important;
-}
-
-/* Remove ANY cyan backgrounds */
-[class*="cyan"], [class*="teal"]:not(svg),
-div[style*="background-color: #00e5c0"],
-div[style*="background: #00e5c0"],
-div[style*="background-color: rgb(0, 229, 192)"] {
-    background: transparent !important;
-    background-color: transparent !important;
-}
-
-/* Hover effects */
-[data-testid="stStatusWidget"] button:hover {
+button[data-testid="baseButton-header"]:hover {
     border-color: #00e5c0 !important;
 }
 
-[data-testid="stStatusWidget"] button:hover svg {
+button[data-testid="baseButton-header"]:hover .st-emotion-cache-nsoqg8 {
     fill: #00e5c0 !important;
 }
 
-/* Ensure the deploy button text is visible */
-[data-testid="stStatusWidget"] button span {
-    color: #e8edf8 !important;
-    font-family: 'Space Mono', monospace !important;
-    font-size: 0.78rem !important;
+/* Remove any cyan square */
+div[style*="background-color: #00e5c0"],
+div[style*="background: #00e5c0"] {
+    background: transparent !important;
 }
-
-/* Debug - add a temporary border to see if the element exists */
-[data-testid="stStatusWidget"] { border: 2px solid red !important; } 
 </style>
 """
 
