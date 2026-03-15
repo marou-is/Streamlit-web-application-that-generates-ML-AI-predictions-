@@ -34,6 +34,13 @@ html,body,[data-testid="stApp"],[data-testid="stAppViewContainer"],
 [data-testid="stHeader"] button { background:transparent !important; border:none !important; box-shadow:none !important; }
 [data-testid="stHeader"] button:hover { background:var(--bg3) !important; border-radius:6px !important; }
 [data-testid="stHeader"] svg path,[data-testid="stHeader"] svg rect,[data-testid="stHeader"] svg circle { fill:var(--teal) !important; }
+[data-testid="stMainMenuButton"] svg path,[data-testid="stMainMenuButton"] svg rect,[data-testid="stMainMenuButton"] svg circle { fill:unset !important; }
+[data-testid="stMainMenuButton"] svg path:not([fill="none"]) { fill:var(--white) !important; }
+[data-testid="stMainMenuButton"],
+[data-testid="stMainMenuButton"]:focus,
+[data-testid="stMainMenuButton"]:active,
+[data-testid="stMainMenuButton"]:focus-visible { background:transparent !important; box-shadow:none !important; border:none !important; outline:none !important; }
+[data-testid="stMainMenuButton"]:hover { background:var(--bg3) !important; }
 [data-testid="stMainMenuButton"] svg path:not([fill="none"]) { fill:var(--white) !important; }
 [data-testid="stMainMenuButton"] { background:transparent !important; box-shadow:none !important; border:none !important; }
 [data-testid="stMainMenuButton"]:hover { background:var(--bg3) !important; border-radius:6px !important; }
