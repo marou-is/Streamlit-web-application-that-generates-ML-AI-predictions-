@@ -134,6 +134,46 @@ HERO_CSS = """
     padding-left: .2rem;
     opacity: .85;
 }
+/* Header */
+[data-testid="stHeader"] { 
+  background:rgba(11,15,26,.92) !important; 
+  backdrop-filter:blur(12px) !important; 
+  border-bottom:1px solid var(--rim) !important; 
+}
+
+/* Show the three-dots menu */
+[data-testid="stHeader"] [data-testid="stStatusWidget"] {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Remove cyan square from deploy button */
+[data-testid="stHeader"] [data-testid="stStatusWidget"] [data-testid="baseButton-header"] {
+  background: transparent !important;
+  border: 1px solid var(--rim) !important;
+  border-radius: 6px !important;
+}
+
+/* Style the three-dots icon */
+[data-testid="stHeader"] [data-testid="stStatusWidget"] svg {
+  fill: var(--white) !important;
+  color: var(--white) !important;
+}
+
+/* Remove any cyan backgrounds */
+[data-testid="stHeader"] [data-testid="stStatusWidget"] div[style*="background"] {
+  background: transparent !important;
+}
+
+/* Keep hover effect clean */
+[data-testid="stHeader"] [data-testid="stStatusWidget"] [data-testid="baseButton-header"]:hover {
+  border-color: var(--teal) !important;
+}
+
+[data-testid="stHeader"] [data-testid="stStatusWidget"] [data-testid="baseButton-header"]:hover svg {
+  fill: var(--teal) !important;
+}
 </style>
 """
 
